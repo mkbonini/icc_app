@@ -1,7 +1,7 @@
 export async function getWeather() {
 	try {
 		const response = await fetch(
-			'https://api.open-meteo.com/v1/forecast?latitude=39.74&longitude=-104.98&current_weather=true&temperature_unit=fahrenheit',
+			`http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=Denver&aqi=no`,
 			{
 				method: 'GET',
 				mode: 'cors',
