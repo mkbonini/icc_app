@@ -1,47 +1,47 @@
 export async function getWeather() {
-	try {
-		const response = await fetch(
-			`http://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=Denver&aqi=no`,
-			{
-				method: 'GET',
-				mode: 'cors',
-				headers: {
-					'Content-Type': 'application/json',
-					'Access-Control-Allow-Origin': '*',
-					accept: 'application/json',
-				},
-			}
-		);
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=Denver&aqi=no`,
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          accept: "application/json",
+        },
+      }
+    );
 
-		if (!response.ok) {
-			throw new Error(`Error! status: ${response.status}`);
-		}
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
 
-		const result = await response.json();
-		return result;
-	} catch (err) {
-		console.log(err);
-	}
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export async function postData(body:any) {
+export async function postData(body: any) {
   try {
-		const response = await fetch('https://httpbin.org/post', {
-      method: 'POST',
+    const response = await fetch("https://httpbin.org/post", {
+      method: "POST",
       body: JSON.stringify(body),
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        accept: 'application/json',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        accept: "application/json",
       },
     });
 
-		if (!response.ok) {
-			throw new Error(`Error! status: ${response.status}`);
-		}
-		const result = await response.status;
-		return result;
-	} catch (err) {
-		console.log(err);
-	}
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+    const result = await response.status;
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
 }
