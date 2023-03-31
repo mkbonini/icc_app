@@ -1,6 +1,6 @@
 import { RegistrationInput } from "./types";
 
-export async function getWeather(location:number) {
+export async function getWeather(location:string) {
   try {
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${location}&aqi=no`,

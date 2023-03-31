@@ -12,6 +12,7 @@ import {
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { styled } from "@mui/system";
 import { postData } from "../utils/model";
+import { RegistrationInput } from "../utils/types";
 
 export default function AddressForm() {
   const firstNameRef = useRef<HTMLInputElement>(null);
@@ -38,7 +39,8 @@ export default function AddressForm() {
       zip: zipRef.current!.value,
     });
   };
-  async function submitData(body: any) {
+
+  async function submitData(body: RegistrationInput) {
     let request = await postData(body);
     request == 200 && setSubmitSuccess(true);
   }

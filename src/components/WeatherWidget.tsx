@@ -20,7 +20,7 @@ export default function WeatherWidget() {
 
   useEffect(() => {
     (async () => {
-      let weatherResults = (await getWeather(80202)) as Weather;
+      let weatherResults = (await getWeather("80202")) as Weather;
       setWeather(weatherResults);
       setLoading(false);
     })();
@@ -34,7 +34,7 @@ export default function WeatherWidget() {
     submitWeather(zipRef.current!.value);
   };
 
-  async function submitWeather(body: any) {
+  async function submitWeather(body: string) {
     let weatherResults = (await getWeather(body)) as Weather;
     setWeather(weatherResults);
     setLoading(false);
