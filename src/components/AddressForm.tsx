@@ -1,9 +1,16 @@
 import * as React from "react";
 import { useRef, useState } from "react";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import { Button, Card, CardContent, Grid, Box } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  TextField,
+  GridProps,
+} from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { styled } from "@mui/system";
 import { postData } from "../utils/model";
 
 export default function AddressForm() {
@@ -35,6 +42,14 @@ export default function AddressForm() {
     let request = await postData(body);
     request == 200 && setSubmitSuccess(true);
   }
+
+  const FormGrid = styled(Grid)<GridProps>(({ theme }) => ({
+    padding: "2rem 5rem 3rem 5rem",
+    [theme.breakpoints.down("sm")]: {
+      padding: "2rem 2rem 3rem 2rem",
+    },
+  }));
+  
   return (
     <Card
       sx={{
@@ -61,7 +76,7 @@ export default function AddressForm() {
               Please enter your information below
             </Typography>
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={1.5} sx={{ p: "2rem 5rem 3rem 5rem" }}>
+              <FormGrid container spacing={1.5}>
                 <Grid xs={12} sm={6} item>
                   <TextField
                     required
@@ -146,7 +161,7 @@ export default function AddressForm() {
                     Submit
                   </Button>
                 </Grid>
-              </Grid>
+              </FormGrid>
             </form>
           </>
         ) : (

@@ -12,9 +12,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Header />
-        <Box sx={{ width: 900, m: "2rem auto" }}>
-          <WeatherWidget />
-        </Box>
+        <WeatherWidget />
         <AddressForm />
       </ThemeProvider>
     </div>
