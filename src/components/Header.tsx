@@ -3,7 +3,7 @@ import icc from "../assets/icc.svg";
 
 export default function Header() {
   return (
-    <Box sx={{backgroundColor: 'secondary.main'}}>
+    <Box sx={{ backgroundColor: "secondary.main" }}>
       <Box
         component="img"
         alt="ICC-CDS Logo"
