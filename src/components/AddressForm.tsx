@@ -27,6 +27,7 @@ export default function AddressForm() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
+    event.preventDefault()
     submitData({
       first_name: firstNameRef.current!.value,
       last_name: lastNameRef.current!.value,

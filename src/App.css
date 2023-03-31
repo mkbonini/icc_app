@@ -1,5 +1,8 @@
  #root {
   height: 100vh; 
-   min-height: 900px;
+  min-height: 900px;
   background-color: #288164;
+}
+body {
+  margin: 0;
 }
