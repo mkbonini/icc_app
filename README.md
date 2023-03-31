@@ -13,7 +13,7 @@
 
 View the live site at: [This Link](https://icc-app.vercel.app/)
 
-
+<img src="https://user-images.githubusercontent.com/16493270/229236795-f9c7dc72-0148-40c4-a8fb-357a628a0eb3.png" alt="Webpage">
 
 ## Challenge Prompt
 
