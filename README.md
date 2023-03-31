@@ -1,13 +1,17 @@
 # ICC-CDS Code Challenge
 
 ## How to run the app  
+* Important: Node version above 16.X needed to run this application locally
+* Important: There is an api key needed to access the weatherAPI data.  An API key can be obtained from [this link](https://www.weatherapi.com) and should be placed in a .env file  located in the root directory with the key named `VITE_API_KEY`
 
-* To run the app, first fork and clone down this repo to your local device. 
-  * `npm install` to download dependencies 
+
+  * To run the app clone this repo to your local device. 
+  * `cd icc_app` to enter directory
+  * `npm install` to download dependencies nop
   * `npm run build` to build the app 
   * `npm run dev` to run the server
   * app opens at http://localhost:5173/
-* Note there is an api key needed to access the weatherAPI data.  An API key can be obtained from [this link](https://www.weatherapi.com) and should be placed in a .env file located in the root directory
+
 
 ## The Application
 
