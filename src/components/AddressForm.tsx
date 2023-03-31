@@ -1,8 +1,9 @@
 import * as React from 'react';
-import {useRef} from 'react'
+import {useRef, useState} from 'react'
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Button, Card, CardContent, Grid } from '@mui/material';
+import { Button, Card, CardContent, Grid, Box } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { postData } from '../utils/model';
 
 export default function AddressForm() {
@@ -14,13 +15,22 @@ export default function AddressForm() {
   const stateRef = useRef<HTMLInputElement>(null)
   const zipRef = useRef<HTMLInputElement>(null)
 
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    postData({first_name: firstNameRef.current!.value, last_name: lastNameRef.current!.value, email: emailRef.current!.value, address: addressRef.current!.value, city: cityRef.current!.value, state: stateRef.current!.value, zip: zipRef.current!.value});
-}
+    console.log('hello');
+    submitData({first_name: firstNameRef.current!.value, last_name: lastNameRef.current!.value, email: emailRef.current!.value, address: addressRef.current!.value, city: cityRef.current!.value, state: stateRef.current!.value, zip: zipRef.current!.value})
+  } 
+  async function submitData(body:any) {  
+    let request = await postData(body);
+    request== 200 && setSubmitSuccess(true); 
+  }
 	return (
-			<Card sx={{maxWidth: 900, margin:"0 auto" }}>
+			<Card sx={{maxWidth: 900, margin:"0 auto", minHeight: 560, display:'flex', flexDirection:'column', justifyContent:'center' }}>
         <CardContent>
+          { !submitSuccess ?  
+          <>
           <Typography variant='h1' fontSize={38} align='center'  sx={{pt:5, fontWeight:'500' }}>Registration</Typography>
           <Typography variant='h2' fontSize={18} align='center' >Please enter your information below</Typography>
           <form onSubmit={handleSubmit}>
@@ -51,6 +61,13 @@ export default function AddressForm() {
             </Grid>
           </Grid>
           </form>
+          </> : 
+          <>
+            <CheckCircleIcon color='primary' sx={{fontSize:'80px', mt: '-1rem', width: '100%'}}/>
+            <Typography variant='h1' fontSize={38} align='center'  sx={{pt:1, fontWeight:'500' }}>Success!</Typography>
+            <Typography variant='h2' fontSize={18} align='center' sx={{ pt:1 }}>Your information has been submitted</Typography>
+          </>
+          }
         </CardContent>      
        </Card>
 	);

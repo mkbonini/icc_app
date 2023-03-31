@@ -1,7 +1,7 @@
 export async function getWeather() {
 	try {
 		const response = await fetch(
-			`http://api.weatherapi.com/v1/forecast.json?key=636cc7aa43b149be807194636233003&q=Denver&aqi=no`,
+			`http://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=Denver&aqi=no`,
 			{
 				method: 'GET',
 				mode: 'cors',
@@ -9,7 +9,6 @@ export async function getWeather() {
 					'Content-Type': 'application/json',
 					'Access-Control-Allow-Origin': '*',
 					accept: 'application/json',
-					// X_API_KEY: `${process.env.REACT_APP_API_KEY}`,
 				},
 			}
 		);
@@ -26,13 +25,23 @@ export async function getWeather() {
 }
 
 export async function postData(body:any) {
-	fetch('https://httpbin.org/post', {
-		method: 'POST',
-		body: JSON.stringify(body),
-		headers: {
-			'Content-Type': 'application/json',
-			'Access-Control-Allow-Origin': '*',
-			accept: 'application/json',
-		},
-	});
+  try {
+		const response = await fetch('https://httpbin.org/post', {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        accept: 'application/json',
+      },
+    });
+
+		if (!response.ok) {
+			throw new Error(`Error! status: ${response.status}`);
+		}
+		const result = await response.status;
+		return result;
+	} catch (err) {
+		console.log(err);
+	}
 }
