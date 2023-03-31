@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
+import { Card, Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { getWeather } from '../utils/weatherAPI';
 import Weather from '../utils/types';
+import { lightBlue } from '@mui/material/colors';
 
 export default function WeatherWidget() {
   const [weather, setWeather] = useState(null);
@@ -17,33 +18,43 @@ export default function WeatherWidget() {
       
     })();
   }, []);
-  // console.log(weather?.current)
+  console.log(weather)
 	return (
 		<>
-			<Box sx={{
-         mt: 0,
+			<Card sx={{
          display: 'flex', 
-         height: 70,
-         backgroundcolor: 'blue',
+         width: 260,
+        //  height: 80,
          }}>
-        <Box
-          component="img"
-          sx={{
-            height: 50,
-            width: 50,
-            maxHeight: { xs: 233, md: 167 },
-            maxWidth: { xs: 350, md: 250 },
-          }}
-          alt={weather?.current.condition.text}
-          src={weather?.current.condition.icon}
-        />
-				<Box sx={{}}>
-          <Typography color='text.secondary' sx={{  }}>{Math.round(weather?.current.temp_f)} {'\xB0F'}</Typography>
-          <Typography color='text.secondary' sx={{  }}>Humidity: {Math.round(weather?.current.humidity)}%</Typography>
-          <Typography color='text.secondary' sx={{  }}>Wind speed: {Math.round(weather?.current.wind_mph)} mph</Typography>
+          <Box sx={{p: 2}}>
+            <Typography fontSize={25} color='primary' sx={{fontWeight: 'bold', lineHeight: 1, mt: 0 }}>{weather?.location.name}</Typography>
+            <Typography color='primary' fontSize={60} align='center' sx={{fontWeight: 'bold', lineHeight: .9, mt: 0 }}>{Math.round(weather?.current.temp_f)}{'\xB0'}</Typography>
+            <Typography color='primary' align='center' sx={{}}>H:{Math.round(weather?.forecast.forecastday[0].day.maxtemp_f)}{'\xB0'} / L:{Math.round(weather?.forecast.forecastday[0].day.mintemp_f)}{'\xB0'}</Typography>
+          </Box>
+          <Box sx={{p: 2}}>
+          <Box sx={{ 
+            display: 'flex',
+            margin: '0 auto',
+          }}>
+            <Box
+              component="img"
+              alt={weather?.current.condition.text}
+              src={weather?.current.condition.icon}
+              sx={{
+                height: 75,
+                width: 75,
+              }}
+            />
+            
+          </Box>
+				<Box sx={{margin: '0 auto'}}>
+          <Typography color='text.secondary' sx={{ mt: .25 }}>{weather?.current.condition.text}</Typography>
+          
+          {/* <Typography color='text.secondary' align='center'>Humidity: {Math.round(weather?.current.humidity)}%</Typography>
+          <Typography color='text.secondary' align='center'>Wind speed: {Math.round(weather?.current.wind_mph)} mph</Typography> */}
         </Box>
-				
 			</Box>
+			</Card>
 		</>
 	);
 }

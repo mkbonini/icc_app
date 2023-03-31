@@ -1,21 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import WeatherWidget from './components/WeatherWidget'
 import AddressForm from './components/AddressForm'
+import Header from './components/Header';
+import { ThemeProvider } from '@mui/material/styles';
+import {theme} from './utils/theme'
 import './App.css'
 
-interface Weather {
-
-}
-
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      {/* <WeatherWidget/> */}
-      <AddressForm></AddressForm>
+      <ThemeProvider theme={theme}>
+        <Header/>
+        <WeatherWidget/>
+        <AddressForm/>
+      </ThemeProvider>
     </div>
   )
 }
