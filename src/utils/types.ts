@@ -1,19 +1,26 @@
-type Icon = string;
-type Condition = Icon;
-type Current = Condition;
-
-type WeatherData = {
+type Weather = {
   current: {
     condition: {
       icon: string;
+      text: string;
     }
     temp_f: number;
     wind_mph: number;
   }
+  forecast: {
+    forecastday: [
+      {
+        day: {
+          maxtemp_f: number;
+          mintemp_f: number;
+        }
+      }
+    ]
+  }
+  location: {
+    name:string;
+    region: string;
+  }
 }
-type Weather ={
-  icon: string;
-  temp_f: number;
-  wind_mph: number;
-}
+
 export default Weather

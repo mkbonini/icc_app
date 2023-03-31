@@ -1,35 +1,33 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Card, Box } from '@mui/material';
+import { Card, Box, CircularProgress } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { getWeather } from '../utils/weatherAPI';
 import Weather from '../utils/types';
-import { lightBlue } from '@mui/material/colors';
 
 export default function WeatherWidget() {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState<Weather | null>(null);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
     (async () => {
-      let weatherResults = await getWeather();
+      let weatherResults = await getWeather() as Weather;
       setWeather(weatherResults);
       setLoading(false);
       
     })();
   }, []);
-  console.log(weather)
+
 	return (
-		<>
 			<Card sx={{
          display: 'flex', 
          width: 260,
-        //  height: 80,
          }}>
+          { loading ?? <CircularProgress/>}
           <Box sx={{p: 2}}>
             <Typography fontSize={25} color='primary' sx={{fontWeight: 'bold', lineHeight: 1, mt: 0 }}>{weather?.location.name}</Typography>
-            <Typography color='primary' fontSize={60} align='center' sx={{fontWeight: 'bold', lineHeight: .9, mt: 0 }}>{Math.round(weather?.current.temp_f)}{'\xB0'}</Typography>
-            <Typography color='primary' align='center' sx={{}}>H:{Math.round(weather?.forecast.forecastday[0].day.maxtemp_f)}{'\xB0'} / L:{Math.round(weather?.forecast.forecastday[0].day.mintemp_f)}{'\xB0'}</Typography>
+            <Typography color='primary' fontSize={60} align='center' sx={{fontWeight: 'bold', lineHeight: .9, mt: 0 }}>{Math.round(weather?.current.temp_f!)}{'\xB0'}</Typography>
+            <Typography color='primary' align='center' sx={{}}>H:{Math.round(weather?.forecast.forecastday[0].day.maxtemp_f!)}{'\xB0'} / L:{Math.round(weather?.forecast.forecastday[0].day.mintemp_f!)}{'\xB0'}</Typography>
           </Box>
           <Box sx={{p: 2}}>
           <Box sx={{ 
@@ -55,6 +53,5 @@ export default function WeatherWidget() {
         </Box>
 			</Box>
 			</Card>
-		</>
 	);
 }
