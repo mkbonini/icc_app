@@ -1,4 +1,4 @@
-type Weather = {
+export type Weather = {
   current: {
     condition: {
       icon: string;
@@ -23,4 +23,12 @@ type Weather = {
   };
 };
 
-export default Weather;
+export type RegistrationInput = {
+  first_name: string;
+  last_name: string;
+  email: string;
+  address: string;
+  city: string;
+  state: string;
+  zip: number;
+}

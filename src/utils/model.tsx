@@ -1,4 +1,6 @@
-export async function getWeather(location:any) {
+import { RegistrationInput } from "./types";
+
+export async function getWeather(location:number) {
   try {
     const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=${location}&aqi=no`,
@@ -24,7 +26,7 @@ export async function getWeather(location:any) {
   }
 }
 
-export async function postData(body: any) {
+export async function postData(body: RegistrationInput) {
   try {
     const response = await fetch("https://httpbin.org/post", {
       method: "POST",

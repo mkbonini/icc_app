@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { getWeather } from "../utils/model";
-import Weather from "../utils/types";
+import {Weather} from "../utils/types";
 
 export default function WeatherWidget() {
   const [weather, setWeather] = useState<Weather | null>(null);
@@ -20,7 +20,7 @@ export default function WeatherWidget() {
 
   useEffect(() => {
     (async () => {
-      let weatherResults = (await getWeather("80202")) as Weather;
+      let weatherResults = (await getWeather(80202)) as Weather;
       setWeather(weatherResults);
       setLoading(false);
     })();
