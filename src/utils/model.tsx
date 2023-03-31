@@ -1,7 +1,7 @@
 export async function getWeather() {
   try {
     const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=Denver&aqi=no`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${import.meta.env.VITE_API_KEY}&q=Denver&aqi=no`,
       {
         method: "GET",
         mode: "cors",

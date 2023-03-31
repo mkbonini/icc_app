@@ -27,7 +27,6 @@ export default function AddressForm() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (
     event: React.FormEvent<HTMLFormElement>
   ) => {
-    event.preventDefault();
     submitData({
       first_name: firstNameRef.current!.value,
       last_name: lastNameRef.current!.value,
@@ -49,7 +48,7 @@ export default function AddressForm() {
       padding: "2rem 2rem 3rem 2rem",
     },
   }));
-  
+
   return (
     <Card
       sx={{
