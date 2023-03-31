@@ -13,9 +13,9 @@ export default function AddressForm() {
   const stateRef = useRef('')
   const zipRef = useRef('')
 
-  function handleSubmit(event) {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log( emailRef.current.value); 
+    // console.log( emailRef?.current.value); 
 }
 	return (
 		<>

@@ -1,16 +1,17 @@
 import { Box } from "@mui/material";
-import icc from './assets/icc.svg'
+import icc from '../assets/icc.svg'
 export default function Header() {
 
   return(
-      <Box>
+      <Box sx={{ backgroundColor:'white'}}>
         <Box
           component="img"
           alt='ICC-CDS Logo'
           src={icc}
           sx={{
-            height: 75,
-            width: 75,
+            p:1,
+            height: 40,
+            // width: 75,
           }}>
           </Box>
       </Box>

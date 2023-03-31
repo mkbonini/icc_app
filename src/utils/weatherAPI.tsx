@@ -1,3 +1,5 @@
+import Weather from "./types";
+
 export async function getWeather() {
 	try {
 		const response = await fetch(
