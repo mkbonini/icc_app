@@ -3,22 +3,22 @@ import {useRef} from 'react'
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { Button, Card, CardContent, Grid } from '@mui/material';
+import { postData } from '../utils/model';
 
 export default function AddressForm() {
-  const firstNameRef = useRef('')
-  const lastNameRef = useRef('')
-  const emailRef = useRef('')
-  const addressRef = useRef('')
-  const cityRef = useRef('')
-  const stateRef = useRef('')
-  const zipRef = useRef('')
+  const firstNameRef = useRef<HTMLInputElement>(null)
+  const lastNameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const addressRef = useRef<HTMLInputElement>(null)
+  const cityRef = useRef<HTMLInputElement>(null)
+  const stateRef = useRef<HTMLInputElement>(null)
+  const zipRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // console.log( emailRef?.current.value); 
+    postData({first_name: firstNameRef.current!.value, last_name: lastNameRef.current!.value, email: emailRef.current!.value, address: addressRef.current!.value, city: cityRef.current!.value, state: stateRef.current!.value, zip: zipRef.current!.value});
 }
 	return (
-		<>
 			<Card sx={{maxWidth: 900, margin:"0 auto" }}>
         <CardContent>
           <Typography variant='h1' fontSize={38} align='center'  sx={{pt:5, fontWeight:'500' }}>Registration</Typography>
@@ -52,7 +52,6 @@ export default function AddressForm() {
           </Grid>
           </form>
         </CardContent>      
-      </Card>
-		</>
+       </Card>
 	);
 }

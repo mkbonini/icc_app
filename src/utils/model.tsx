@@ -24,3 +24,15 @@ export async function getWeather() {
 		console.log(err);
 	}
 }
+
+export async function postData(body:any) {
+	fetch('https://httpbin.org/post', {
+		method: 'POST',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-Type': 'application/json',
+			'Access-Control-Allow-Origin': '*',
+			accept: 'application/json',
+		},
+	});
+}
