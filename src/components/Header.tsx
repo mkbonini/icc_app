@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
-import icc from '../assets/icc.svg'
+import icc from '../assets/icc.svg';
+
 export default function Header() {
 
   return(
